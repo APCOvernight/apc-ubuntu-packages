@@ -1,0 +1,38 @@
+dist: trusty
+sudo: required
+
+addons:
+  sonarqube:
+    token:
+      secure: '$SONARQUBE_API_KEY'
+
+
+language: python
+
+python:
+ - "2.7"
+# uncomment and edit the following line if your project needs to run something other than `rake`:
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y equivs python-pip
+  - pip install deb-pkg-tools
+
+install: true
+
+script:
+#   - sonar-scanner
+   - python ./file_process -f ns-control -v $TRAVIS_TAG
+   - sudo equivs-build ns-control
+
+before_deploy:
+  cp ../python-selfietorium_1_all.deb python-selfietorium_1_all.deb
+
+deploy:
+  provider: releases
+  api_key: '$GITHUB_API_KEY'
+  file: 'apc-b'
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true

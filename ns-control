@@ -1,0 +1,10 @@
+Maintainer: Mike Hingey <mike.hingley@apc-overnight.com>
+Description: <short description; defaults to some wise words>
+ long description and info
+ .
+ second paragraph
+Package: apc-developer-setup
+Section: misc
+Priority: optional
+Version: v1.0
+Architecture: all
