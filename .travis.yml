@@ -22,7 +22,7 @@ install: true
 
 script:
 #   - sonar-scanner
-   - python ./file_process -f ns-control -v $TRAVIS_TAG
+   - python ./file_process.py -f ns-control -v $TRAVIS_TAG
    - sudo equivs-build ns-control
 
 before_deploy:
